@@ -1,0 +1,5 @@
+<% 3.times do |n| %>
+permissao_<%= n %>:
+  recursos: permissao_<%= n %>
+  perfis: permissao_<%= n %>
+<% end %>

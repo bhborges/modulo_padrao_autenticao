@@ -1,0 +1,8 @@
+[data-toggle=tableify] tbody,
+[data-toggle=tableify] tfoot {
+  display: none;
+}
+.tableify > tbody > tr > td,
+.tableify > tbody > tr > td * {
+  cursor: pointer !important;
+}

@@ -1,0 +1,30 @@
+<%= render 'layouts/messages', object: recurso %>
+
+<%= form_for(recurso, html: { autocomplete: 'off' }, data: { disabled: read_only }) do |form| %>
+  <div class="page-header">
+    <h4>Dados do Recurso <small class="text-muted"> Informações sobre o Recurso</small></h4>
+  </div>
+  <div class="row">
+    <%= form.label :nome, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.text_field :nome, class: 'form-control', maxlength: 255 %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :descricao, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.text_field :descricao, class: 'form-control', maxlength: 255 %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :tipo, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.text_field :tipo, class: 'form-control', maxlength: 255 %>
+    </div>
+  </div>
+  <div class="panel-buttons">
+    <%= link_to recursos_path, class: 'btn btn-default btn-lg' do %><i class="fa fa-undo"></i> Voltar<% end %>
+    <% unless read_only %><% if can? :update, Recurso %><%= form.button class: 'btn btn-primary btn-lg', data: { disable_with: 'Salvando...' } do %><i class="fa fa-check"></i> Salvar<% end %><% end %><% end %>
+    <% if read_only %><% if can? :update, Recurso %><%= link_to edit_recurso_path(recurso), class: 'btn btn-primary btn-lg' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %><% end %>
+  </div>
+<% end %>

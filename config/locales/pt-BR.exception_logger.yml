@@ -1,0 +1,16 @@
+pt-BR:
+  exception_logger:
+    logged_exceptions:
+      index:
+        title: Logs
+        filters: Filtros
+        latest_exceptions: Últimas Exceções
+        exception: Exceção
+        controller_action: Controlador / Ação
+        dates: Datas
+        today: Hoje
+        last_few_days: Últimos 3 dias
+        last_7_days: Últimos 7 dias
+        last_30_days: Últimos 30 dias
+      show:
+        title: Logs

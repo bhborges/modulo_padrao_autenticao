@@ -1,0 +1,111 @@
+pt-BR:
+  quantidade_abreviada: Qtde
+  recursos:
+    tipos:
+      modelo: Modelo
+      simbolo: Símbolo
+  servicos_correios:
+    tipos:
+      correios: Correios
+      retirada_local: Retirada no local
+  produtos:
+    status:
+      disponivel: Disponível
+      indisponivel: Indisponível
+      esgotado: Esgotado
+    preco_venda:
+      preco_indisponivel: Indisponível
+  pedidos:
+    formas_pagamento:
+      boleto: Boleto bancário
+      cartao_credito: Cartão de crédito
+    status:
+      aguardando_pagamento: Aguardando pagamento
+      em_producao: Em produção
+      em_separacao: Em separação
+      postagem: Postagem
+      em_transito: Em transito
+      aguardando_retirada: Aguardando retirada
+      devolvido: Devolvido
+      entregue: Entregue
+      cancelado: Cancelado
+    status_abreviado:
+      aguardando_pagamento: Pagamento
+      em_producao: Em produção
+      em_separacao: Em separação
+      postagem: Postagem
+      em_transito: Em transito
+      aguardando_retirada: Retirada
+      devolvido: Devolvido
+      entregue: Entregue
+      cancelado: Cancelado
+  api:
+    mensagens:
+      token_ausente: Token ausente
+      token_invalido: Token inválido
+  activerecord:
+    attributes:
+      usuario:
+        password: Senha
+        password_confirmation: Confirmar senha
+      contexto:
+        perfil: Perfil
+        usuario: Usuario
+      sessao:
+        descricao: Descrição
+      perfil:
+        descricao: Descrição
+      recurso:
+        descricao: Descrição
+      categoria:
+        descricao: Descrição
+      subcategoria:
+        descricao: Descrição
+      produto:
+        id: ID
+        codigo: Código
+        descricao: Descrição
+        codigo_barra: Código de barra
+        preco: Preço
+        visualizacoes: Visualizações
+      estoque_entrada:
+        codigo_produto: Cod. Produto
+        produto_id: Produto
+        quantidade: Quantidade
+        custo_producao: Custo de produção
+        valor_venda: Valor de venda
+      estoque_saida:
+        codigo_produto: Cod. Produto
+        produto_id: Produto
+        quantidade: Quantidade
+        custo_producao: Custo de produção
+        valor_venda: Valor de venda
+      cliente:
+        email: E-mail
+      endereco:
+        descricao: Tipo
+        numero: Número
+        cep: CEP
+        uf: UF
+      pacote:
+        descricao: Descrição
+        diametro: Diâmetro
+      pedido:
+        servico_correio_id: Serviço de entrega
+        codigo_rastreio: Código de rastreio
+        idlan: Lançamento financeiro
+        created_at: Emissão
+      pedido_historico:
+        observacao: Observação
+        codigo_rastreio: Código de rastreio
+        dias_producao: Dias para produção
+        created_at: Emissão
+      plp:
+        servico_correio_id: Serviço
+        codigo: Código
+        created_at: Emissão
+      servico_correio:
+        codigo: Código
+        simbolo: Símbolo
+        descricao: Descrição
+        descricao_loja: Descrição na loja

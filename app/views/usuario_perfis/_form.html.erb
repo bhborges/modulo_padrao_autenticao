@@ -1,0 +1,24 @@
+<%= render 'layouts/messages', object: usuarioperfil %>
+
+<%= form_for(usuarioperfil, html: { autocomplete: 'off' }, data: { disabled: read_only }) do |form| %>
+  <div class="page-header">
+    <h4>Dados do Usuarioperfil <small class="text-muted"> Informações sobre o Usuarioperfil</small></h4>
+  </div>
+  <div class="row">
+    <%= form.label :usuarios_id, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.collection_select :usuarios_id, @usuarios, :id, :COLUMN_NAME, { include_blank: @usuarios.length > 1 }, class: 'form-control chosen-select' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :perfis_id, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.collection_select :perfis_id, @perfis, :id, :COLUMN_NAME, { include_blank: @perfis.length > 1 }, class: 'form-control chosen-select' %>
+    </div>
+  </div>
+  <div class="panel-buttons">
+    <%= link_to usuario_perfis_path, class: 'btn btn-default btn-lg' do %><i class="fa fa-undo"></i> Voltar<% end %>
+    <% unless read_only %><% if can? :update, Usuarioperfil %><%= form.button class: 'btn btn-primary btn-lg', data: { disable_with: 'Salvando...' } do %><i class="fa fa-check"></i> Salvar<% end %><% end %><% end %>
+    <% if read_only %><% if can? :update, Usuarioperfil %><%= link_to edit_usuario_perfil_path(usuarioperfil), class: 'btn btn-primary btn-lg' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %><% end %>
+  </div>
+<% end %>

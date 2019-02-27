@@ -1,0 +1,64 @@
+<% namespace_name = controller_class_name.include?('::') ? controller_class_name.split("::").first : '' -%>
+<% singular_table_name_without_namespace = singular_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<% plural_table_name_without_namespace = plural_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<% route_url_sanitized = namespace_name.present? ? route_url.gsub("#{namespace_name.downcase}/", '') : route_url -%>
+<% class_name_sanitized = namespace_name.present? ? class_name.gsub("#{namespace_name}::", '') : class_name -%>
+<% index_helper_sanitized = namespace_name.present? ? index_helper.gsub("#{namespace_name.downcase}_", '') : index_helper -%>
+<%- model_class = singular_table_name_without_namespace.classify -%>
+<%%- model_class = <%= model_class %> -%>
+<%% title '<%= plural_table_name_without_namespace.capitalize %>' %>
+
+<%%= render 'layouts/messages' %>
+
+<div class="row btn-panel">
+  <div class="col-6 col-md-8">
+    <%% if can? :create, <%= model_class %> %><%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %><i class="fa fa-plus"></i> Novo<%% end %><%% end %>
+  </div>
+  <div class="col-6 col-md-4">
+    <%%= form_tag(<%= plural_table_name %>_path, method: 'get', id: '<%= singular_table_name_without_namespace %>-default-search-form') do %>
+      <div class="input-group">
+        <%%= text_field_tag :s, params[:s], class: 'form-control', placeholder: 'Pesquisar', autofocus: true %>
+        <div class="input-group-append btn-group with-border">
+          <%%= button_tag class: 'btn btn-success', name: '' do %><i class="fa fa-search"></i><%% end %>
+          <%%= button_tag '', type: 'button', class: 'btn btn-success btn-sm dropdown-toggle', name: '' %>
+        </div>
+      </div>
+    <%% end %>
+  </div>
+</div>
+
+<div class="card">
+  <table class="table table-striped table-hover" id="<%= plural_table_name_without_namespace %>-table" data-toggle="tableify">
+    <thead>
+      <tr>
+        <th width="50" class="text-center"></th>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+        <th><%%= model_class.human_attribute_name :<%= attribute.reference? ? "#{attribute.name}_id" : attribute.name %> %></th>
+<% end -%>
+      </tr>
+    </thead>
+    <tbody>
+      <%% @<%= plural_table_name_without_namespace %>.each do |<%= singular_table_name_without_namespace %>| %>
+        <tr>
+          <td class="tableify-actions">
+            <%% if cannot? :read, <%= model_class %> %><%%= link_to <%= singular_table_name %>_path(<%= singular_table_name_without_namespace %>), class: 'tableify-default-action' do %><i class="fa fa-eye"></i> Visualizar<%% end %><%% end %>
+            <%% if can? :update, <%= model_class %> %><%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name_without_namespace %>), class: 'tableify-default-action' do %><i class="fa fa-pencil"></i> Editar<%% end %><%% end %>
+            <%% if can? :destroy, <%= model_class %> %><%%= link_to <%= singular_table_name %>_path(<%= singular_table_name_without_namespace %>), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este registro?' } do %><i class="fa fa-trash"></i> Excluir<%% end %><%% end %>
+          </td>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <td><%%= <%= singular_table_name_without_namespace %>.<%= attribute.name %> %></td>
+<% end -%>
+        </tr>
+      <%% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="<%= attributes.length + 1 %>">
+          <%%= page_entries_info @<%= plural_table_name_without_namespace %> %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<%%= will_paginate @<%= plural_table_name_without_namespace %>, list_classes: %w[pagination justify-content-center mt-lg], inner_window: 1 %>

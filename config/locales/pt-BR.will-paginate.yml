@@ -1,0 +1,16 @@
+pt-BR:
+  will_paginate:
+    previous_label: "&laquo; Anterior"
+    next_label: "Próximo &raquo;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      single_page:
+        zero:  "Nenhum registro encontrado"
+        one:   "1 registro encontrado"
+        other: "%{count} registros encontrados"
+      single_page_html:
+        zero:  "Nenhum registro encontrado"
+        one:   "<b>1</b> registro encontrado"
+        other: "<b>%{count}</b> registros encontrados"
+      multi_page: "Exibindo %{from} - %{to} de %{count} registros encontrados"
+      multi_page_html: "Exibindo <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> registros encontrados"

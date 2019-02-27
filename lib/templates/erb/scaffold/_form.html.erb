@@ -1,0 +1,51 @@
+<% namespace_name = controller_class_name.include?('::') ? controller_class_name.split("::").first : '' -%>
+<% singular_table_name_without_namespace = singular_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<% plural_table_name_without_namespace = plural_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<% route_url_sanitized = namespace_name.present? ? route_url.gsub("#{namespace_name.downcase}/", '') : route_url -%>
+<% class_name_sanitized = namespace_name.present? ? class_name.gsub("#{namespace_name}::", '') : class_name -%>
+<% index_helper_sanitized = namespace_name.present? ? index_helper.gsub("#{namespace_name.downcase}_", '') : index_helper -%>
+<% namespace_name_not_app = namespace_name.present? ? (namespace_name.downcase != 'app' ? "#{namespace_name.downcase}_" : '') : '' -%>
+<% model_class = singular_table_name_without_namespace.classify -%>
+<%%= render 'layouts/messages', object: <%= singular_table_name_without_namespace %> %>
+
+<%%= form_for(<%= namespace_name.present? ? "[:#{namespace_name.downcase}, #{singular_table_name_without_namespace}]" : "#{singular_table_name_without_namespace}" %>, html: { autocomplete: 'off' }, data: { disabled: read_only }) do |form| %>
+  <div class="page-header">
+    <h4>Dados do <%= singular_table_name_without_namespace.capitalize %> <small class="text-muted"> Informações sobre o <%= singular_table_name_without_namespace.capitalize %></small></h4>
+  </div>
+<% attributes.each do |attribute| -%>
+  <div class="row">
+    <%%= form.label :<%= attribute.column_name %>, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+<%- if attribute.reference? -%>
+      <%%= form.collection_select :<%= attribute.column_name %>, @<%= attribute.name.pluralize %>, :id, :COLUMN_NAME, { include_blank: @<%= attribute.name.pluralize %>.length > 1 }, class: 'form-control chosen-select' %>
+<%- elsif attribute.password_digest? -%>
+      <%%= form.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="row">
+    <%%= form.label :password_confirmation, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%%= form.password_field :password_confirmation, class: 'form-control' %>
+<% elsif attribute.type == :string -%>
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: 'form-control', maxlength: <%= ! attribute.attr_options[:limit].nil? ? attribute.attr_options[:limit] : 255 %> %>
+<% elsif attribute.type == :time -%>
+      <%%= form.text_field :<%= attribute.column_name %>, class: 'form-control timepicker' %>
+<% elsif attribute.type == :date -%>
+      <div class="input-group">
+        <%%= form.text_field :<%= attribute.column_name %>, class: 'form-control datepicker' %>
+        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+      </div>
+<% elsif attribute.type == :boolean -%>
+      <%%= form.switch_box :<%= attribute.column_name %>, class: 'el-switch-style mt-sm' %>
+<% else -%>
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: 'form-control' %>
+<% end -%>
+    </div>
+  </div>
+<% end -%>
+  <div class="panel-buttons">
+    <%%= link_to <%= plural_table_name %>_path, class: 'btn btn-default btn-lg' do %><i class="fa fa-undo"></i> Voltar<%% end %>
+    <%% unless read_only %><%% if can? :update, <%= model_class %> %><%%= form.button class: 'btn btn-primary btn-lg', data: { disable_with: 'Salvando...' } do %><i class="fa fa-check"></i> Salvar<%% end %><%% end %><%% end %>
+    <%% if read_only %><%% if can? :update, <%= model_class %> %><%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name_without_namespace %>), class: 'btn btn-primary btn-lg' do %><i class="fa fa-pencil"></i> Editar<%% end %><%% end %><%% end %>
+  </div>
+<%% end %>

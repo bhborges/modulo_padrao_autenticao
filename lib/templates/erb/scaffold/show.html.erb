@@ -1,0 +1,6 @@
+<% namespace_name = controller_class_name.include?('::') ? controller_class_name.split("::").first : '' -%>
+<% singular_table_name_without_namespace = singular_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<% plural_table_name_without_namespace = plural_table_name.gsub("#{namespace_name.downcase}_", '') -%>
+<%% title 'Ver <%= singular_table_name_without_namespace.capitalize %>' %>
+
+<%%= render 'form', <%= singular_table_name_without_namespace %>: @<%= singular_table_name_without_namespace %>, read_only: true %>

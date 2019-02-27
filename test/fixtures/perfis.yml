@@ -1,0 +1,4 @@
+<% 3.times do |n| %>
+perfil_<%= n %>:
+  descricao: MyString
+<% end %>

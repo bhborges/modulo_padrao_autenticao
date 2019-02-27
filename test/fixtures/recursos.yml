@@ -1,0 +1,6 @@
+<% 3.times do |n| %>
+recurso_<%= n %>:
+  nome: MyString
+  descricao: MyString
+  tipo: MyString
+<% end %>

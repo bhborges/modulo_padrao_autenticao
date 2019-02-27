@@ -1,0 +1,5 @@
+<% 3.times do |n| %>
+odisseia_<%= n %>:
+  texto: MyText
+  fonte: MyText
+<% end %>

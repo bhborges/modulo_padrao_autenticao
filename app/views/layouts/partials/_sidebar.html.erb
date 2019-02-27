@@ -1,0 +1,37 @@
+<aside class="left-menu">
+  <div class="aside-inner">
+    <nav class="sidebar">
+      <div class="sidebar-search">
+        <%= form_tag 'javascript:void(0)', method: 'get', id: 'form-sidebar-search' do%>
+          <div class="input-group search">
+            <div class="input-group-prepend">
+              <%= button_tag class: 'btn btn-primary' do %><i class="fa fa-search"></i><% end %>
+            </div>
+            <%= text_field_tag :search_menu_item, '', class: 'form-control', placeholder: 'Pesquisar', autocomplete: 'off' %>
+          </div>
+        <% end %>
+      </div>
+      <ul class="nav" id="left-menu-accordion">
+        <li class="nav-heading">
+          <%= link_to root_path do %><em class="fa fa-dashboard"></em> Dashboard<% end %>
+        </li>
+        <li class="nav-heading">
+          <span data-toggle="collapse" data-target="#collapse-menu-administracao" aria-expanded="false">
+            <i class="fa fa-sitemap"></i> Administração <i class="fa fa-angle-down arrow"></i>
+          </span>
+          <ul class="collapse collapsed" id="collapse-menu-administracao">
+            <li><%= link_to root_path do %><em class="fa fa-caret-right"></em> <span>Usuários</span><% end %></li>
+          </ul>
+        </li>
+        <li class="nav-heading">
+          <span data-toggle="collapse" data-target="#collapse-menu-cadastro" aria-expanded="false">
+            <i class="fa fa-file-text-o"></i> Cadastros <i class="fa fa-angle-down arrow"></i>
+          </span>
+          <ul class="collapse collapsed" id="collapse-menu-cadastro">
+            <li><%= link_to odisseias_path do %><em class="fa fa-caret-right"></em> <span>Odisséias</span><% end %></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

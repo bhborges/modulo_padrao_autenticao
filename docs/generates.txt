@@ -1,0 +1,8 @@
+rails g scaffold perfil descricao
+rake db:migrate
+rails g scaffold recurso nome descricao tipo
+rake db:migrate
+rails g scaffold permissao recursos:references perfis:references
+rake db:migrate
+rails g scaffold usuario_perfil usuarios:references perfis:references
+rake db:migrate

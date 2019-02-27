@@ -1,0 +1,90 @@
+<header class="navbar-header">
+  <div class="navbar-brand">
+    <div class="brand-logo">
+    </div>
+  </div>
+  <div class="navbar-content">
+    <%= yield :title %>
+  </div>
+  <div class="navbar-dropdowns">
+    <nav class="navbar navbar-expand-sm">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item user-notifications">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-bullhorn notificacao-icon"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="width: 400px">
+              <div class="dropdown-header clear-after">
+                <div class="pull-left">Notificações</div>
+                <div class="pull-right"><a data-remote="true" href="#">Marcar todos como lido</a></div>
+              </div>
+              <div class="dropdown-item">
+                <a href="#">
+                  <strong>Existe uma notificação pendente</strong>
+                  <br><em>23/04/2018 às 12:12</em>
+                </a>
+              </div>
+              <div class="dropdown-item">
+                <a href="#">
+                  <strong>Existe uma notificação pendente</strong>
+                  <br><em>23/04/2018 às 12:12</em>
+                </a>
+              </div>
+              <div class="dropdown-item">
+                <a href="#">
+                  <strong>Existe uma notificação pendente</strong>
+                  <br><em>23/04/2018 às 12:12</em>
+                </a>
+              </div>
+              <div class="dropdown-item">
+                <a href="#">
+                  <strong>Existe uma notificação pendente</strong>
+                  <br><em>23/04/2018 às 12:12</em>
+                </a>
+              </div>
+              <div class="dropdown-footer">
+                <a href="#">Ver todas as notificações</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown user-settings">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="user-info">
+                <p class="user-name">
+                  <%= current_usuario&.email %>
+                </p>
+              </div>
+              <div class="user-photo">
+                <%= image_tag 'usuario-200x200.png', alt: current_usuario&.email, title: current_usuario&.email %>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="width: 400px">
+              <div class="dropdown-item">
+                <div class="row">
+                  <div class="col-4 pr0">
+                    <div class="user-photo">
+                      <%= image_tag 'usuario-200x200.png', alt: current_usuario&.email, title: current_usuario&.email %>
+                    </div>
+                  </div>
+                  <div class="col-8 pl0">
+                    <div class="user-info">
+                      <p><strong><%= current_usuario&.email %></strong></p>
+                      <p><small><%= current_usuario&.email %></small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Meu perfil</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Alterar contexto de trabalho</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to destroy_usuario_session_path, class: 'dropdown-item', method: :delete do %>Sair<% end %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,5 @@
+<% 3.times do |n| %>
+usuarioperfil_<%= n %>:
+  usuarios: usuario_perfil_<%= n %>
+  perfis: usuario_perfil_<%= n %>
+<% end %>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="<%= locale %>">
+  <head>
+    <meta charset="utf-8">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <title>Open Sea</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="layout-fixed fuelux">
+    <div class="wrapper">
+      <%= render partial: 'layouts/partials/header' %>
+      <%= render partial: 'layouts/partials/sidebar' %>
+      <%= render partial: 'layouts/partials/content' %>
+      <%= render partial: 'layouts/partials/footer' %>
+      <%= render partial: 'layouts/partials/modal' %>
+      <%= render partial: 'layouts/partials/loading' %>
+    </div>
+    <%= yield :javascripts %>
+  </body>
+</html>

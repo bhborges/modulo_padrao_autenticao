@@ -1,0 +1,55 @@
+<%- model_class = Permissao -%>
+<% title 'Permissoes' %>
+
+<%= render 'layouts/messages' %>
+
+<div class="row btn-panel">
+  <div class="col-6 col-md-8">
+    <% if can? :create, Permissao %><%= link_to new_permissao_path, class: 'btn btn-primary' do %><i class="fa fa-plus"></i> Novo<% end %><% end %>
+  </div>
+  <div class="col-6 col-md-4">
+    <%= form_tag(permissoes_path, method: 'get', id: 'permissao-default-search-form') do %>
+      <div class="input-group">
+        <%= text_field_tag :s, params[:s], class: 'form-control', placeholder: 'Pesquisar', autofocus: true %>
+        <div class="input-group-append btn-group with-border">
+          <%= button_tag class: 'btn btn-success', name: '' do %><i class="fa fa-search"></i><% end %>
+          <%= button_tag '', type: 'button', class: 'btn btn-success btn-sm dropdown-toggle', name: '' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <table class="table table-striped table-hover" id="permissoes-table" data-toggle="tableify">
+    <thead>
+      <tr>
+        <th width="50" class="text-center"></th>
+        <th><%= model_class.human_attribute_name :recursos_id %></th>
+        <th><%= model_class.human_attribute_name :perfis_id %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @permissoes.each do |permissao| %>
+        <tr>
+          <td class="tableify-actions">
+            <% if cannot? :read, Permissao %><%= link_to permissao_path(permissao), class: 'tableify-default-action' do %><i class="fa fa-eye"></i> Visualizar<% end %><% end %>
+            <% if can? :update, Permissao %><%= link_to edit_permissao_path(permissao), class: 'tableify-default-action' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %>
+            <% if can? :destroy, Permissao %><%= link_to permissao_path(permissao), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este registro?' } do %><i class="fa fa-trash"></i> Excluir<% end %><% end %>
+          </td>
+          <td><%= permissao.recursos %></td>
+          <td><%= permissao.perfis %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">
+          <%= page_entries_info @permissoes %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<%= will_paginate @permissoes, list_classes: %w[pagination justify-content-center mt-lg], inner_window: 1 %>
