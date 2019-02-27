@@ -7,13 +7,13 @@
   <div class="row">
     <%= form.label :recurso_id, class: 'col-2 col-form-label text-right' %>
     <div class="col-10">
-      <%= form.collection_select :recurso_id, @recursos, :id, :COLUMN_NAME, { include_blank: @recursos.length > 1 }, class: 'form-control chosen-select' %>
+      <%= form.collection_select :recurso_id, @recursos, :id, :descricao, { include_blank: @recursos.length > 1 }, class: 'form-control chosen-select' %>
     </div>
   </div>
   <div class="row">
     <%= form.label :perfil_id, class: 'col-2 col-form-label text-right' %>
     <div class="col-10">
-      <%= form.collection_select :perfil_id, @perfis, :id, :COLUMN_NAME, { include_blank: @perfis.length > 1 }, class: 'form-control chosen-select' %>
+      <%= form.collection_select :perfil_id, @perfis, :id, :descricao, { include_blank: @perfis.length > 1 }, class: 'form-control chosen-select' %>
     </div>
   </div>
   <div class="row">

@@ -9,4 +9,4 @@ usuario = Usuario.create(email: 'borgesbruno@hotmail.com.br', password: 'b992058
 perfil = Perfil.create(descricao: 'Adminstrador')
 UsuarioPerfil.create(usuario_id: usuario.id, perfil_id: perfil.id)
 recurso = Recurso.create(nome: 'todos', descricao: 'Todos(*)', tipo: 'simbolo')
-Permissao.create(perfil_id: perfil.id, recurso_id: recurso.id, criar: true, alterar: true, excluir: true, visualizar: true)
+Permissao.create(perfil_id: perfil.id, recurso_id: recurso.id, criar: true, atualizar: true, excluir: true, visualizar: true)

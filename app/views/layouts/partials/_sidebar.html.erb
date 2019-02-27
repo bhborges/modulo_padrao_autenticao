@@ -15,20 +15,28 @@
         <li class="nav-heading">
           <%= link_to root_path do %><em class="fa fa-dashboard"></em> Dashboard<% end %>
         </li>
+        <!-- Administrativo -->
         <li class="nav-heading">
           <span data-toggle="collapse" data-target="#collapse-menu-administracao" aria-expanded="false">
             <i class="fa fa-sitemap"></i> Administração <i class="fa fa-angle-down arrow"></i>
           </span>
           <ul class="collapse collapsed" id="collapse-menu-administracao">
-            <li><%= link_to root_path do %><em class="fa fa-caret-right"></em> <span>Usuários</span><% end %></li>
+            <li><%= link_to usuarios_path do %><em class="fa fa-caret-right"></em> <span>Usuários</span><% end %></li>
+          </ul>
+          <ul class="collapse collapsed" id="collapse-menu-administracao">
+            <li><%= link_to perfis_path do %><em class="fa fa-caret-right"></em> <span>Perfis</span><% end %></li>
+          </ul>
+          <ul class="collapse collapsed" id="collapse-menu-administracao">
+            <li><%= link_to recursos_path do %><em class="fa fa-caret-right"></em> <span>Recursos</span><% end %></li>
           </ul>
         </li>
+        <!-- Cadastros -->
         <li class="nav-heading">
           <span data-toggle="collapse" data-target="#collapse-menu-cadastro" aria-expanded="false">
             <i class="fa fa-file-text-o"></i> Cadastros <i class="fa fa-angle-down arrow"></i>
           </span>
           <ul class="collapse collapsed" id="collapse-menu-cadastro">
-            <li><%= link_to odisseias_path do %><em class="fa fa-caret-right"></em> <span>Odisséias</span><% end %></li>
+            <li><%= link_to permissoes_path do %><em class="fa fa-caret-right"></em> <span>Odisséias</span><% end %></li>
           </ul>
         </li>
       </ul>
