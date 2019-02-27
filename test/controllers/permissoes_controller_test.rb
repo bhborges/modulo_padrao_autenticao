@@ -59,8 +59,12 @@ class PermissoesControllerTest < Admin::ApplicationTest
     def permissao_create_params
       {
         permissao: {
-          recursos_id: nil,
-          perfis_id: nil
+          recurso_id: nil,
+          perfil_id: nil,
+          visualizar: nil,
+          criar: nil,
+          atualizar: nil,
+          excluir: nil
         }
       }
     end

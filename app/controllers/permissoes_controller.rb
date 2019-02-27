@@ -61,15 +61,19 @@ class PermissoesController < ApplicationController
 
     # Carregar registros relacionados
     def carregar_associacoes
-      @recursos = Recursos.all
-      @perfis = Perfis.all
+      @recursos = Recurso.all
+      @perfis = Perfil.all
     end
 
     # Permitir parametros utilizaveis
     def permissao_params
       params.require(:permissao).permit(
-        :recursos_id,
-        :perfis_id
+        :recurso_id,
+        :perfil_id,
+        :visualizar,
+        :criar,
+        :atualizar,
+        :excluir
       )
     end
 end

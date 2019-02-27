@@ -1,5 +1,9 @@
 <% 3.times do |n| %>
 permissao_<%= n %>:
-  recursos: permissao_<%= n %>
-  perfis: permissao_<%= n %>
+  recurso: permissao_<%= n %>
+  perfil: permissao_<%= n %>
+  visualizar: false
+  criar: false
+  atualizar: false
+  excluir: false
 <% end %>

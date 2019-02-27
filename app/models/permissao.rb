@@ -1,9 +1,9 @@
 class Permissao < ApplicationRecord
   # Callbacks
   # Associacoes
-  belongs_to :recursos
+  belongs_to :recurso
 
-  belongs_to :perfis
+  belongs_to :perfil
 
   # Validacoes
   # validates :descricao, presence: true, uniqueness: true, length: { maximum: 255 }
@@ -13,9 +13,9 @@ class Permissao < ApplicationRecord
   add_scope :select_lista do
     select(%(
       permissoes.*, 
-      recursos. AS recursos_descricao, 
-      perfis. AS perfis_descricao
-    )).joins(:recursos, :perfis)
+      recursos. AS recurso_descricao, 
+      perfis. AS perfil_descricao
+    )).joins(:recurso, :perfil)
   end
 
   add_scope :pesquisar do |valor|

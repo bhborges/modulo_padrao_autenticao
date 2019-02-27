@@ -2,8 +2,8 @@ require 'test_helper'
 
 class PermissaoTest < ActiveSupport::TestCase
   context 'validacoes' do
-    should belong_to(:recursos)
-    should belong_to(:perfis)
+    should belong_to(:recurso)
+    should belong_to(:perfil)
   end
 
   test 'deve salvar permissao' do

@@ -65,4 +65,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'contexto', 'contextos'
   inflect.irregular 'recurso', 'recursos'
   inflect.irregular 'permissao', 'permissoes'
+  inflect.irregular 'usuario_perfil', 'usuarios_perfis'
   end

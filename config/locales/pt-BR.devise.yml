@@ -19,11 +19,11 @@ pt-BR:
       unconfirmed: Antes de continuar, confirme a sua conta.
     mailer:
       confirmation_instructions:
-        subject: Confirmação de cadastro no Portal de Acessos Claretiano
+        subject: Confirmação de cadastro no Portal de Acessos
       reset_password_instructions:
-        subject: Redefinição de senha do Portal de Acessos Claretiano
+        subject: Redefinição de senha do Portal de Acessos
       unlock_instructions:
-        subject: Instruções de desbloqueio do Portal de Acessos Claretiano
+        subject: Instruções de desbloqueio do Portal de Acessos
     omniauth_callbacks:
       failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
       success: Autorizado com sucesso de uma conta de %{kind}.
