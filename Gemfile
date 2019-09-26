@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 
 # Bootstrap 4 ruby gem for Ruby on Rails (Sprockets) and Hanami (formerly Lotus)
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 
 # The Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline
 gem 'font-awesome-rails'
