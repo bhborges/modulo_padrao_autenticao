@@ -41,8 +41,8 @@
             <% if can? :update, Permissao %><%= link_to edit_permissao_path(permissao), class: 'tableify-default-action' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %>
             <% if can? :destroy, Permissao %><%= link_to permissao_path(permissao), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este registro?' } do %><i class="fa fa-trash"></i> Excluir<% end %><% end %>
           </td>
-          <td><%= permissao.recurso.descricao %></td>
-          <td><%= permissao.perfil.descricao %></td>
+          <td><%= permissao.recurso %></td>
+          <td><%= permissao.perfil %></td>
           <td><%= permissao.visualizar %></td>
           <td><%= permissao.criar %></td>
           <td><%= permissao.atualizar %></td>

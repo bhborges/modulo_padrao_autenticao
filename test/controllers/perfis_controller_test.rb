@@ -1,6 +1,6 @@
 require_relative 'application_test'
 
-class PerfisControllerTest < Admin::ApplicationTest
+class PerfisControllerTest < ApplicationTest
   setup do
     @perfil = perfis(:perfil_0)
   end

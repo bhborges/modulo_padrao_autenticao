@@ -1,6 +1,6 @@
 require_relative 'application_test'
 
-class PermissoesControllerTest < Admin::ApplicationTest
+class PermissoesControllerTest < ApplicationTest
   setup do
     @permissao = permissoes(:permissao_0)
   end

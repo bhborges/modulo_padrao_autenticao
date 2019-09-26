@@ -1,6 +1,6 @@
 require_relative 'application_test'
 
-class UsuariosPerfisControllerTest < Admin::ApplicationTest
+class UsuariosPerfisControllerTest < ApplicationTest
   setup do
     @usuarioperfil = usuariosperfis(:usuarioperfil_0)
   end

@@ -1,6 +1,6 @@
 require_relative 'application_test'
 
-class RecursosControllerTest < Admin::ApplicationTest
+class RecursosControllerTest < ApplicationTest
   setup do
     @recurso = recursos(:recurso_0)
   end

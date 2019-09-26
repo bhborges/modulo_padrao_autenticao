@@ -1,0 +1,24 @@
+<%= render 'layouts/messages', object: usuario %>
+
+<%= form_for(usuario, html: { autocomplete: 'off' }, data: { disabled: read_only }) do |form| %>
+  <div class="page-header">
+    <h4>Dados do Usuario <small class="text-muted"> Informações sobre o Usuario</small></h4>
+  </div>
+  <div class="row">
+    <%= form.label :nome, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.text_field :nome, class: 'form-control', maxlength: 255 %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :login, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.text_field :login, class: 'form-control', maxlength: 255 %>
+    </div>
+  </div>
+  <div class="panel-buttons">
+    <%= link_to usuarios_path, class: 'btn btn-default btn-lg' do %><i class="fa fa-undo"></i> Voltar<% end %>
+    <% unless read_only %><% if can? :update, Usuario %><%= form.button class: 'btn btn-primary btn-lg', data: { disable_with: 'Salvando...' } do %><i class="fa fa-check"></i> Salvar<% end %><% end %><% end %>
+    <% if read_only %><% if can? :update, Usuario %><%= link_to edit_usuario_path(usuario), class: 'btn btn-primary btn-lg' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %><% end %>
+  </div>
+<% end %>

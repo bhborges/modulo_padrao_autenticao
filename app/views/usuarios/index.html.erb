@@ -1,0 +1,55 @@
+<%- model_class = Usuario -%>
+<% title 'Usuarios' %>
+
+<%= render 'layouts/messages' %>
+
+<div class="row btn-panel">
+  <div class="col-6 col-md-8">
+    <% if can? :create, Usuario %><%= link_to new_usuario_path, class: 'btn btn-primary' do %><i class="fa fa-plus"></i> Novo<% end %><% end %>
+  </div>
+  <div class="col-6 col-md-4">
+    <%= form_tag(usuarios_path, method: 'get', id: 'usuario-default-search-form') do %>
+      <div class="input-group">
+        <%= text_field_tag :s, params[:s], class: 'form-control', placeholder: 'Pesquisar', autofocus: true %>
+        <div class="input-group-append btn-group with-border">
+          <%= button_tag class: 'btn btn-success', name: '' do %><i class="fa fa-search"></i><% end %>
+          <%= button_tag '', type: 'button', class: 'btn btn-success btn-sm dropdown-toggle', name: '' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <table class="table table-striped table-hover" id="usuarios-table" data-toggle="tableify">
+    <thead>
+      <tr>
+        <th width="50" class="text-center"></th>
+        <th><%= model_class.human_attribute_name :nome %></th>
+        <th><%= model_class.human_attribute_name :login %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @usuarios.each do |usuario| %>
+        <tr>
+          <td class="tableify-actions">
+            <% if cannot? :read, Usuario %><%= link_to usuario_path(usuario), class: 'tableify-default-action' do %><i class="fa fa-eye"></i> Visualizar<% end %><% end %>
+            <% if can? :update, Usuario %><%= link_to edit_usuario_path(usuario), class: 'tableify-default-action' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %>
+            <% if can? :destroy, Usuario %><%= link_to usuario_path(usuario), method: :delete, data: { confirm: 'Tem certeza que deseja excluir este registro?' } do %><i class="fa fa-trash"></i> Excluir<% end %><% end %>
+          </td>
+          <td><%= usuario.nome %></td>
+          <td><%= usuario.login %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">
+          <%= page_entries_info @usuarios %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<%= will_paginate @usuarios, list_classes: %w[pagination justify-content-center mt-lg], inner_window: 1 %>

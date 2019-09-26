@@ -6,7 +6,7 @@
 require_relative 'application_test'
 
 <% module_namespacing do -%>
-class <%= controller_class_name %>ControllerTest < Admin::ApplicationTest
+class <%= controller_class_name %>ControllerTest < ApplicationTest
   <%- if mountable_engine? -%>
   include Engine.routes.url_helpers
 

@@ -1,23 +1,47 @@
 
+## CRIAR BANCO DE DADOS
 rake db:create
-rails g devise usuario user
-rake db:migrate
-rails g devise:views
-# configurar Usuarios
 
+## AUTENTICACAO
+rails g scaffold usuario nome login
 rails g scaffold perfil descricao
-rake db:migrate
 rails g scaffold recurso nome descricao tipo
 rake db:migrate
 rails g scaffold permissao recurso:references perfil:references  visualizar:boolean criar:boolean atualizar:boolean excluir:boolean
-rake db:migrate
 rails g scaffold usuario_perfil usuario:references perfil:references
 rake db:migrate
 
+## CONFIGURAR USUARIOS
+rails g devise usuario
+rake db:migrate
+rails g devise:views
+
+rake db:seed
+
+# CANDIDATO
+rails g scaffold pessoa nome email data_nascimento:date cpf rg rg_estado rg_ano sexo raca estado_civil telefone_residencial:string{20} telefone_comercial:string{20} celular:string{20} ano_conclusao_ensino_medio:integer tipo_escola estado_nascimento cidade_nascimento mae pai
+rake db:migrate
+rails g scaffold endereco pessoa:references tipo_endereco:string{20} cep:string{10} sigla_estado:string{2} estado:string{20} cidade:string{40} logradouro numero:integer bairro:string{40} complemento
+rails g scaffold nivel_ensino codigo:string{1} codigo_tipo_curso:integer descricao
+rake db:migrate
+rails g scaffold campanha nivel_ensino:references codigo nome tipo data_inicio:datetime data_fim:datetime
+rails g scaffold curso nivel_ensino:references codigo:string{8} descricao
+rake db:migrate
+rails g scaffold candidato campanha:references pessoa:references nota:decimal{12.3} classificacao:integer situacao
+rails g scaffold chamadas campanha:references descricao data_inicio:datetime data_fim:datetime
+rake db:migrate
 
 
 
-rails d scaffold perfil descricao
-rails d scaffold recurso nome descricao tipo
-rails d scaffold permissao recurso:references perfil:references  visualizar:boolean criar:boolean atualizar:boolean excluir:boolean
-rails d scaffold usuario_perfil usuario:references perfil:references
+rails d scaffold usuario
+rails d scaffold perfil
+rails d scaffold recurso
+rails d scaffold permissao
+rails d scaffold usuario_perfil
+rails d scaffold pessoa
+rails d scaffold endereco
+rails d scaffold nivel_ensino
+rails d scaffold campanha
+rails d scaffold curso
+rails d scaffold candidato
+rails d scaffold chamadas

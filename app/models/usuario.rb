@@ -6,6 +6,8 @@ class Usuario < ApplicationRecord
   # Callbacks
   # Associacoes
   # Validacoes
+  validates :nome, length: { maximum: 255 }
+  validates :login, length: { maximum: 255 }
   # validates :descricao, presence: true, uniqueness: true, length: { maximum: 255 }
 
   # Escopos
@@ -27,4 +29,16 @@ class Usuario < ApplicationRecord
 
   # Nota: os metodos somente utilizados em callbacks ou utilizados somente por essa
   #       propria classe deverao ser privados (remover essa anotacao)
+
+  # Usuario via portal sso
+
+  def self.from_omniauth(auth)
+    usuario = find_or_initialize_by(login: auth.info.username)
+    return usuario unless usuario.new_record?
+
+    usuario.nome = "#{auth.extra.first_name.strip} #{auth.extra.last_name.strip}"
+    usuario.email = auth.info.email
+    usuario.password = Devise.friendly_token
+    usuario.save! && usuario
+  end
 end

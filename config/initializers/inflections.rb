@@ -66,4 +66,11 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'recurso', 'recursos'
   inflect.irregular 'permissao', 'permissoes'
   inflect.irregular 'usuario_perfil', 'usuarios_perfis'
+  inflect.irregular 'pessoa', 'pessoas'
+  inflect.irregular 'endereco', 'enderecos'
+  inflect.irregular 'nivel_ensino', 'niveis_ensinos'
+  inflect.irregular 'campanha', 'campanhas'
+  inflect.irregular 'curso', 'cursos'
+  inflect.irregular 'candidato', 'candidatos'
+  inflect.irregular 'chamadas', 'chamadas'
   end

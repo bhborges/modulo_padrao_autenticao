@@ -1,0 +1,94 @@
+AllCops:
+  TargetRubyVersion: 2.3.3
+  Exclude:
+    - '**/db/**/*'
+    - '**/Gemfile'
+    - '**/Gemfile.lock'
+    - '**/Rakefile'
+    - '**/rails'
+    - '**/migrate/**/*'
+    - '**/vendor/**/*'
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/IndentationConsistency:
+  EnforcedStyle: rails
+
+Layout/FirstParameterIndentation:
+  Enabled: false
+
+Layout/ClosingParenthesisIndentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false
+
+AlignParameters:
+  Enabled: false
+
+ClassLength:
+  CountComments: false
+  Max: 150
+
+ModuleLength:
+  CountComments: false
+  Max: 250
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+MethodLength:
+  CountComments: false
+  Max: 50
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+MethodLength:
+  Enabled: false

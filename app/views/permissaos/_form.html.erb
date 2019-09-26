@@ -1,0 +1,48 @@
+<%= render 'layouts/messages', object: permissao %>
+
+<%= form_for(permissao, html: { autocomplete: 'off' }, data: { disabled: read_only }) do |form| %>
+  <div class="page-header">
+    <h4>Dados do Permissao <small class="text-muted"> Informações sobre o Permissao</small></h4>
+  </div>
+  <div class="row">
+    <%= form.label :recurso_id, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.collection_select :recurso_id, @recursos, :id, :COLUMN_NAME, { include_blank: @recursos.length > 1 }, class: 'form-control chosen-select' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :perfil_id, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.collection_select :perfil_id, @perfils, :id, :COLUMN_NAME, { include_blank: @perfils.length > 1 }, class: 'form-control chosen-select' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :visualizar, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.switch_box :visualizar, class: 'el-switch-style mt-sm' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :criar, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.switch_box :criar, class: 'el-switch-style mt-sm' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :atualizar, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.switch_box :atualizar, class: 'el-switch-style mt-sm' %>
+    </div>
+  </div>
+  <div class="row">
+    <%= form.label :excluir, class: 'col-2 col-form-label text-right' %>
+    <div class="col-10">
+      <%= form.switch_box :excluir, class: 'el-switch-style mt-sm' %>
+    </div>
+  </div>
+  <div class="panel-buttons">
+    <%= link_to permissaos_path, class: 'btn btn-default btn-lg' do %><i class="fa fa-undo"></i> Voltar<% end %>
+    <% unless read_only %><% if can? :update, Permissao %><%= form.button class: 'btn btn-primary btn-lg', data: { disable_with: 'Salvando...' } do %><i class="fa fa-check"></i> Salvar<% end %><% end %><% end %>
+    <% if read_only %><% if can? :update, Permissao %><%= link_to edit_permissao_path(permissao), class: 'btn btn-primary btn-lg' do %><i class="fa fa-pencil"></i> Editar<% end %><% end %><% end %>
+  </div>
+<% end %>
